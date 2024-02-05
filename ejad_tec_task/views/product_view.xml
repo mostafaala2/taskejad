@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<odoo>
+    <record id="product_template_rop_form_view" model="ir.ui.view">
+        <field name="name">product.template.form - rop</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                    <button class="oe_stat_button" type="object" name="get_rop"
+                        icon="fa-bars">
+                        <field string="ROP" name="rop_count" widget="statinfo"/>
+                    </button>
+                </div>
+            <xpath expr="//field[@name='detailed_type']" position="before">
+                    <field name="has_rop"/>
+                    <field name="rop_count" attrs="{'invisible': [('has_rop', '=', True)]}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
